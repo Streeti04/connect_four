@@ -8,7 +8,7 @@ ROWS = 6  # Anzahl der Zeilen
 COLS = 7  # Anzahl der Spalten
 PLAYER = '🔴'  # Symbol für den menschlichen Spieler
 AI = '🟡'  # Symbol für den KI-Spieler
-EMPTY = '⚫'  # Symbol für leere Felder
+EMPTY = ' '  # Symbol für leere Felder
 
 def create_board():
     """
