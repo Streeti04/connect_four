@@ -106,7 +106,7 @@ def evaluate_window(window, piece):
         piece: Der Spielstein (AI oder PLAYER), für den bewertet wird
         
     Rückgabe:
-        Eine Punktzahl, die die Güte der Position angibt.
+        Eine Punktzahl, die den Stand der Position angibt.
     """
     score = 0
     opp_piece = PLAYER if piece == AI else AI  # Gegnerischer Spielstein
@@ -255,9 +255,6 @@ def minimax(board, depth, alpha, beta, maximizingPlayer):
 def get_valid_locations(board):
     """
     Ermittelt alle gültigen Spalten, in die ein Spielstein gesetzt werden kann.
-    
-    Parameter:
-        board: Das Spielfeld
         
     Rückgabe:
         Eine Liste der Spaltenindizes, die noch nicht voll sind.
@@ -275,16 +272,6 @@ def draw_piece(motor_a, motor_b, motor_c, row, col, piece,
     """
     Zeichnet einen Spielstein auf dem physischen Spielfeld.
     
-    Parameter:
-        motor_a: Motor für den Stift (heben/senken)
-        motor_b: Motor für die X-Achse
-        motor_c: Motor für die Y-Achse
-        row: Die Zeile des Spielsteins
-        col: Die Spalte des Spielsteins
-        piece: Der zu zeichnende Spielstein (PLAYER oder AI)
-        max_height: Maximale Höhe des Spielfelds
-        min_height: Minimale Höhe des Spielfelds
-        field_width: Breite des Spielfelds
     """
     # Berechnung der Zellengröße
     cell_width = field_width / COLS
@@ -309,10 +296,6 @@ def draw_cross(motor_a, motor_b, motor_c):
     """
     Zeichnet ein Kreuz (X) für den Spieler.
     
-    Parameter:
-        motor_a: Motor für den Stift (heben/senken)
-        motor_b: Motor für die X-Achse
-        motor_c: Motor für die Y-Achse
     """
     motor_b.run_angle(200, 40)  # 40° nach rechts bewegen
     motor_a.run_angle(200, -180)  # Stift absenken
@@ -327,10 +310,6 @@ def draw_minus(motor_a, motor_b, motor_c):
     """
     Zeichnet ein Minus (-) für die KI.
     
-    Parameter:
-        motor_a: Motor für den Stift (heben/senken)
-        motor_b: Motor für die X-Achse
-        motor_c: Motor für die Y-Achse
     """
     motor_a.run_angle(200, -180)  # Stift absenken
     motor_b.run_angle(200, 50)  # 50° nach rechts bewegen
@@ -408,8 +387,6 @@ def player_input_via_ev3():
     """
     Ermöglicht dem Spieler die Auswahl einer Spalte über den EV3-Stein.
     
-    Rückgabe:
-        Der Index der gewählten Spalte (0-6)
     """
     ev3 = EV3Brick()
     selected_col = 0  # Starte mit der ersten Spalte
@@ -446,8 +423,6 @@ def show_board(board):
     """
     Zeigt das aktuelle Spielfeld im Terminal an.
     
-    Parameter:
-        board: Das anzuzeigende Spielfeld
     """
     print("\n")
     # Zeile für Zeile von oben nach unten ausgeben (umgekehrte Reihenfolge)
