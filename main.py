@@ -1,4 +1,4 @@
-#!/usr/bin/env pybricks-micropython
+#!/sr/bin/env pybricks-micropython
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, ColorSensor, TouchSensor
 from pybricks.parameters import Port
@@ -16,30 +16,22 @@ touch_sensor = TouchSensor(Port.S4)  # Berührungssensor für obere Kalibrierung
 
 def main():
     """
-    Hauptfunktion des Programms.
-    
-    Steuert den Ablauf:
+Hauptfunktion des Programms.
+Steuert den Ablauf:
     1. Signalton zum Programmstart
-    2. Kalibrierung des Spielfelds
-    3. Zeichnen des leeren Spielfelds
-    4. Starten des Spiels
-    5. Signalton zum Programmende
-    """
-    ev3.speaker.beep()  # Signal, dass das Programm gestartet wurde
+2. Kalibrierung des Spielfelds
+3. Zeichnen des leeren Spielfelds
+4. Starten des Spiels
+5. Signalton zum Programmende
+"""
+ev3.speaker.beep()  # Signal, dass das Programm gestartet wurde
+# Kalibrierung durchführen und Spielfeldgrenzen ermitteln
+max_height, min_height, field_width = calibrate_board(motor_b, motor_c, light_sensor, touch_sensor)
+# Leeres Spielfeld zeichnen
+draw_board(motor_a, motor_b, motor_c, max_height, min_height, field_width)
+# Spiel starten
+play_game(motor_a, motor_b, motor_c, max_height, min_height, field_width)
+ev3.speaker.beep()  # Signal, dass das Programm beendet wurde
     
-    # Kalibrierung durchführen und Spielfeldgrenzen ermitteln
-    max_height, min_height, field_width = calibrate_board(motor_b, motor_c, light_sensor, touch_sensor)
-    
-    # Leeres Spielfeld zeichnen
-    draw_board(motor_a, motor_b, motor_c, max_height, min_height, field_width)
-    
-    # Sicherstellen, dass der Stift angehoben ist
-    motor_a.run_angle(600, 180)
-    
-    # Spiel starten
-    play_game(motor_a, motor_b, motor_c, max_height, min_height, field_width)
-    
-    ev3.speaker.beep()  # Signal, dass das Programm beendet wurde
-
 if __name__ == "__main__":
     main()
