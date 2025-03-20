@@ -99,7 +99,7 @@ def winning_move(board, piece):
 
 def evaluate_window(window, piece):
     """
-    Bewertet ein Fenster von vier Zellen im Spielfeld für den Minimax-Algorithmus.
+    Bewertet ein Fenster von vier Zellen im Spielfeld für den Minmax-Algorithmus.
     
     Parameter:
         window: Eine Liste von vier Spielsteinen
@@ -127,7 +127,7 @@ def evaluate_window(window, piece):
 
 def score_position(board, piece):
     """
-    Bewertet die aktuelle Position des Spielfelds für den Minimax-Algorithmus.
+    Bewertet die aktuelle Position des Spielfelds für den Minmax-Algorithmus.
     
     Parameter:
         board: Das Spielfeld
